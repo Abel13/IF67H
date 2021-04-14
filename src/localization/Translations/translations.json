@@ -1,0 +1,16 @@
+{
+  "en": {},
+  "pt-BR": {
+    "titles": {
+      "login": "ENTRE NO APLICATIVO"
+    },
+    "buttons": {
+      "login":"ENTRAR",
+      "register":"CADASTRAR"
+    },
+    "placeholders":{
+      "email": "E-Mail",
+      "password": "Senha"
+    }
+  }
+}
