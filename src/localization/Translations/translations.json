@@ -2,13 +2,17 @@
   "en": {},
   "pt-BR": {
     "titles": {
-      "login": "ENTRE NO APLICATIVO"
+      "login": "ENTRE NO APLICATIVO",
+      "sign": "CRIE SEU CADASTRO"
     },
     "buttons": {
       "login":"ENTRAR",
-      "register":"CADASTRAR"
+      "register":"CADASTRAR",
+      "save":"SALVAR",
+      "backToLogin":"JA TENHO CADASTRO"
     },
     "placeholders":{
+      "name": "Nome",
       "email": "E-Mail",
       "password": "Senha"
     }

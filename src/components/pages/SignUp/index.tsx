@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { Text } from 'react-native';
 import { Button, Input } from '../../atoms';
 import { translate } from '../../../localization';
@@ -9,24 +9,42 @@ import { useNavigation } from '@react-navigation/native';
 import { Container, Content, Title, FieldMarginVertical, MarginVerticalAroundFields } from './styles';
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
+import { useDispatch, useSelector } from 'react-redux';
 
-const SignIn: React.FC = () => {
-  const inputElementRef = useRef(null);
+import * as UserActions from '../../../store/modules/user/actions';
 
+const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
 
-  const handleSubmit = useCallback((data: SignInFormValues) => {
+  const { user } = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = useCallback((data: SignUpFormValues) => {
     console.log("SUBMIT", data);
+    dispatch(UserActions.signUpRequest(data));
   }, []);
 
+
+  useEffect(() => {
+    console.log(user);
+  }, [user])
 
   return (
   <Container>
     <Content>
-      <Title>{translate('titles.login')}</Title>
+      <Title>{translate('titles.sign')}</Title>
         <MarginVerticalAroundFields />
         <Form ref={formRef} onSubmit={handleSubmit}>
+        <Input
+            name="name"
+            icon="user"
+            autoCorrect={false}
+            autoCapitalize="words"
+            placeholder={translate("placeholders.name")}
+          />
+          <FieldMarginVertical/>
           <Input
             name="email"
             icon="mail"
@@ -48,14 +66,14 @@ const SignIn: React.FC = () => {
           />
           <MarginVerticalAroundFields/>
           <Button onPress={() => { formRef.current?.submitForm() }}>
-            {translate('buttons.login')}
+            {translate('buttons.save')}
           </Button>
         </Form>
-        <Button type="text" onPress={() => navigation.navigate("SignUp")}>
-          {translate('buttons.register')}
+        <Button type="text" onPress={() => navigation.navigate("SignIn")}>
+          {translate('buttons.backToLogin')}
         </Button>
     </Content>
   </Container>
 )};
 
-export default SignIn;
+export default SignUp;
