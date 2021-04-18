@@ -9,7 +9,6 @@ export function* signUp({payload}: ReturnType<typeof signUpRequest>) {
   try {
     const { name, email, password } = payload;
 
-    console.log('asdadasdasd');
     yield put(signUpSuccess());
 
     navigationRef.current.goBack();

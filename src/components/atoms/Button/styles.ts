@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components/native";
 import { RectButton } from "react-native-gesture-handler";
+import Icon from 'react-native-vector-icons/Feather'
 
 
 import Colors from "../../../styles/colors.json";
@@ -30,11 +31,23 @@ export const ButtonContainer = styled(RectButton)<ButtonStyleProps>`
   justify-content: center;
 `;
 
+export const IconButton = styled.TouchableOpacity`
+  background-color: ${Colors.whiteTransparent};
+  padding: 5px;
+  border-radius: 2px;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const ButtonTextContainer = styled.TouchableOpacity`
   width: 100%;
   height: 60px;
   align-items: center;
   justify-content: center;
+`;
+
+export const IconContainer = styled(Icon)`
+  color: ${Colors.primary}
 `;
 
 export const ButtonText = styled.Text`

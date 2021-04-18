@@ -1,11 +1,11 @@
 import styled from 'styled-components/native';
 import Colors from '../../../styles/colors.json';
+import * as Animatable from 'react-native-animatable';
 
-export const LongTextContainer = styled.View`
+export const LongTextContainer = styled(Animatable.View)`
   flex: 1;  
   padding: 10px;
   overflow: scroll;
-  max-height: 250px;
 `;
 
 export const Text = styled.Text`

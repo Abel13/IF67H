@@ -6,15 +6,15 @@ import Colors from '../../styles/colors.json';
 import SignIn from '../../components/pages/SignIn';
 import SignUp from '../../components/pages/SignUp';
 
-const Auth = createStackNavigator();
+const Stack = createStackNavigator();
 
 const AuthRoutes: React.FC = () => (
-  <Auth.Navigator screenOptions={{
+  <Stack.Navigator screenOptions={{
     headerShown: false,
   }} >
-    <Auth.Screen name="SignIn" component={ SignIn } />
-    <Auth.Screen name="SignUp" component={ SignUp }/>
-  </Auth.Navigator>
+    <Stack.Screen name="SignIn" component={ SignIn } />
+    <Stack.Screen name="SignUp" component={ SignUp }/>
+  </Stack.Navigator>
 );
 
 export default AuthRoutes;
