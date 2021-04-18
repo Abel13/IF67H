@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { Text } from 'react-native';
-import { Button, Input } from '../../atoms';
+import { PageTitle, Button, Input } from '../../atoms';
 import { translate } from '../../../localization';
 
 import { useNavigation } from '@react-navigation/native';
 
 
-import { Container, Content, Title, FieldMarginVertical, MarginVerticalAroundFields } from './styles';
+import { Container, Content, FieldMarginVertical, MarginVerticalAroundFields } from './styles';
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,27 +14,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as UserActions from '../../../store/modules/user/actions';
 
 const SignUp: React.FC = () => {
+  const { user, openSignUp } = useSelector(state => state.user);  
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
 
-  const { user } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
 
   const handleSubmit = useCallback((data: SignUpFormValues) => {
-    console.log("SUBMIT", data);
+    // "SUBMIT", data);
     dispatch(UserActions.signUpRequest(data));
   }, []);
-
-
-  useEffect(() => {
-    console.log(user);
-  }, [user])
 
   return (
   <Container>
     <Content>
-      <Title>{translate('titles.sign')}</Title>
+    <PageTitle>{translate('titles.login')}</PageTitle>
         <MarginVerticalAroundFields />
         <Form ref={formRef} onSubmit={handleSubmit}>
         <Input
@@ -69,7 +64,7 @@ const SignUp: React.FC = () => {
             {translate('buttons.save')}
           </Button>
         </Form>
-        <Button type="text" onPress={() => navigation.navigate("SignIn")}>
+        <Button type="text" onPress={()=>navigation.navigate("SignIn")}>
           {translate('buttons.backToLogin')}
         </Button>
     </Content>

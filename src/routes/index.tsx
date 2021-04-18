@@ -1,21 +1,21 @@
 import React from 'react';
 
-import { createStackNavigator } from '@react-navigation/stack';
 import Colors from '../styles/colors.json';
 
-import SignIn from '../components/pages/SignIn';
-import SignUp from '../components/pages/SignUp';
+import { useSelector } from 'react-redux';
+import AuthRoutes from './AuthRoute';
+import MainRoutes from './MainRoute';
 
-const Auth = createStackNavigator();
 
-const AuthRoutes: React.FC = () => (
-  <Auth.Navigator screenOptions={{
-    headerShown: false,
-    cardStyle: {backgroundColor: Colors.background },
-  }} >
-    <Auth.Screen name="SignIn" component={ SignIn } />
-    <Auth.Screen name="SignUp" component={ SignUp }/>
-  </Auth.Navigator>
-);
+const Routes: React.FC = () => {
+  const { signedIn } = useSelector(state => state.auth);
 
-export default AuthRoutes;
+  if(signedIn){
+    return(<MainRoutes />)
+  }
+  else {
+    return(<AuthRoutes />)
+  }
+};
+
+export default Routes;

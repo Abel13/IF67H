@@ -20,7 +20,7 @@ const Button: React.FC<ButtonProps> = ({ children, type, ...rest }) => {
         )
       default:
         return (
-          <ButtonContainer { ...rest }>
+          <ButtonContainer { ...rest } type={type}>
             {buttonText()}
           </ButtonContainer>
         )

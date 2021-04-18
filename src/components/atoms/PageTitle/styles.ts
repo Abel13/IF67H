@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import Colors from '../../../styles/colors.json';
 
-export const Container = styled.View`
-  flex: 1;
+export const Title = styled.Text`
+  color: ${Colors.light};
+  font-size: 22px;
 `;

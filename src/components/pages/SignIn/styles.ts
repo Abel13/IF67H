@@ -21,11 +21,6 @@ export const Content = styled.View`
   max-width: 500px;
 `;
 
-export const Title = styled.Text`
-  color: ${Colors.light};
-  font-size: 22px;
-`;
-
 export const FieldMarginVertical = styled.View`
   height: 8px;
 `;
