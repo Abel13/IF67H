@@ -14,7 +14,7 @@
       "delete": "Delete",
       "select": "Select"
     },
-    "placeholders":{
+    "placeholders": {
       "name": "Name",
       "email": "Email",
       "password": "Password",
@@ -24,7 +24,7 @@
       "selectOne": "Select one",
       "genre": "Genre"
     },
-    "navigation":{
+    "navigation": {
       "home": "Home",
       "book": "Book",
       "genre": "Genre",
@@ -32,6 +32,16 @@
     }
   },
   "pt-BR": {
+    "error": {
+      "attention": "Atenção",
+      "delete": "Deseja realmente excluir este item?",
+      "invalid": "Dados inválidos",
+      "invalidMessage": "Preencha todos os dados corretamente",
+      "ops": "Ops",
+      "failDelete": "Erro ao excluir item!",
+      "failAdd": "Erro ao incluir item!",
+      "failEdit": "Erro ao editar item!"
+    },
     "titles": {
       "login": "ENTRE NO APLICATIVO",
       "sign": "CRIE SEU CADASTRO",
@@ -44,7 +54,9 @@
       "backToLogin":"JA TENHO CADASTRO",
       "edit":"Editar",
       "delete": "Excluir",
-      "select": "Selecionar"
+      "select": "Selecionar",
+      "yes": "Sim",
+      "no": "Não"
     },
     "placeholders":{
       "name": "Nome",

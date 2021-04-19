@@ -1,6 +1,7 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
 import firebase from '../../../services/firebase';
 import { Alert } from 'react-native';
+import { translate } from '../../../localization';
 
 import { DELETE_GENRE, deleteGenreSuccess, deleteGenreFailure, deleteGenreRequest, saveGenreRequest, saveGenreSuccess, SAVE_GENRE, GET_GENRES_REQUEST, getGenresSuccess, getGenresFailure } from './actions';
 import { Genre } from '../../../models/genre';
@@ -13,10 +14,7 @@ export function* deleteGenre({payload}: ReturnType<typeof deleteGenreRequest>) {
 
     yield put(deleteGenreSuccess({id}));
   } catch (error) {
-    Alert.alert(
-      'Erro',
-      `Falha ao excluir o livro!`
-    );
+    Alert.alert(translate("error.ops"), translate("error.failDelete"));
     yield put(deleteGenreFailure());
   }
 }
@@ -30,11 +28,7 @@ export function* saveGenre({payload}: ReturnType<typeof saveGenreRequest>) {
 
     yield put(saveGenreSuccess({name, id}));
   } catch (error) {
-    console.log(error)
-    Alert.alert(
-      'Erro',
-      `Falha ao excluir o livro! ${error}`
-    );
+    Alert.alert(translate("error.ops"), translate("error.failSave"));
     yield put(deleteGenreFailure());
   }
 }

@@ -55,7 +55,7 @@ const BookPage: React.FC = ({route}) => {
         dispatch(BookActions.saveBookRequest({title, summary, genreId} as Book))
 
     } catch (error) {
-      Alert.alert("Dados inválidos", "Preencha todos os dados corretamente " + error)
+      Alert.alert(translate("error.invalid"), translate("error.invalidMessage"))
     }
   }, [genre]); 
 

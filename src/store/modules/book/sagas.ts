@@ -1,6 +1,7 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
 import firebase from '../../../services/firebase';
 import { Alert } from 'react-native';
+import { translate } from '../../../localization';
 
 import { DELETE_BOOK, deleteBookSuccess, deleteBookFailure, deleteBookRequest, saveBookRequest, saveBookSuccess, SAVE_BOOK, GET_BOOKS_REQUEST, getBooksSuccess, getBooksFailure } from './actions';
 import { Book } from '../../../models/book';
@@ -13,10 +14,7 @@ export function* deleteBook({payload}: ReturnType<typeof deleteBookRequest>) {
 
     yield put(deleteBookSuccess({id}));
   } catch (error) {
-    Alert.alert(
-      'Erro',
-      `Falha ao excluir o livro!`
-    );
+    Alert.alert(translate("error.ops"), translate("error.failDelete"));
     yield put(deleteBookFailure());
   }
 }
@@ -36,10 +34,7 @@ export function* saveBook({payload}: ReturnType<typeof saveBookRequest>) {
     yield put(saveBookSuccess({title, summary, genreId, id}));
   } catch (error) {
     console.log(error)
-    Alert.alert(
-      'Erro',
-      `Falha ao incluir o livro!`
-    );
+    Alert.alert(translate("error.ops"), translate("error.failAdd"));
     yield put(deleteBookFailure());
   }
 }
@@ -58,10 +53,7 @@ export function* getBooks() {
     
     yield put(getBooksSuccess({books}))
   } catch (error) {
-    Alert.alert(
-      'Erro',
-      `Falha ao incluir o livro!`
-    );
+    Alert.alert(translate("error.ops"), translate("error.failEdit"));
     yield put(getBooksFailure())
   }
 }

@@ -5,6 +5,7 @@ import { Alert } from 'react-native';
 import { signUpFailure, signUpRequest, signUpSuccess, SIGN_UP } from './actions';
 import { useNavigation } from '@react-navigation/core';
 import { navigationRef } from '../../../services/NavigationService';
+import { translate } from '../../../localization';
 
 export function* signUp({payload}: ReturnType<typeof signUpRequest>) {
   try {
@@ -15,10 +16,7 @@ export function* signUp({payload}: ReturnType<typeof signUpRequest>) {
 
     navigationRef.current?.goBack();
   } catch (error) {
-    Alert.alert(
-      'Erro no Login',
-      `Dados inválidos, verifique seu email e senha!`
-    );
+    Alert.alert(translate("error.ops"), translate("error.invalidMessage"));
     yield put(signUpFailure());
   }
 }

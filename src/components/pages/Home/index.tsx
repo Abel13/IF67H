@@ -48,13 +48,13 @@ const Home: React.FC = () => {
               key={item.id}
               editItem={()=>editBook(item)}
               deleteItem={()=>
-                Alert.alert('ATENÇÃO', "Deseja realmente excluir este item?", [
+                Alert.alert(translate("error.attention"), translate("error.delete"), [
                   {
-                    text:"Não"
+                    text:translate("buttons.no")
                   },
                   {
-                    text:"Sim",
-                    onPress: ()=>deleteBook(item),
+                    text:translate("buttons.yes"),
+                    onPress:()=>deleteBook(item),
                   }
                 ])
               }
