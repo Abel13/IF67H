@@ -7,18 +7,47 @@ import Home from '../../components/pages/Home';
 import About from '../../components/pages/About';
 import Book from '../../components/pages/Book';
 import Genre from '../../components/pages/Genre';
+import { createStackNavigator } from '@react-navigation/stack';
+import { translate } from '../../localization';
 
 const Tab = createBottomTabNavigator();
 
+const Stack = createStackNavigator();
+
+const HomeRoutes: React.FC = () => (
+  <Stack.Navigator screenOptions={{
+    headerShown: true,
+  }} >
+    <Stack.Screen name={translate("navigation.home")} component={ Home } />
+    <Stack.Screen name={translate("navigation.book")} component={ Book }/>
+  </Stack.Navigator>
+);
+
+const BookRoutes: React.FC = () => (
+  <Stack.Navigator screenOptions={{
+    headerShown: true,
+  }} >
+    <Stack.Screen name={translate("navigation.book")} component={ Book } />
+  </Stack.Navigator>
+);
+
+const GenreRoutes: React.FC = () => (
+  <Stack.Navigator screenOptions={{
+    headerShown: true,
+  }} >
+    <Stack.Screen name={translate("navigation.genre")} component={ Genre }/>
+  </Stack.Navigator>
+);
+
 const MainRoutes: React.FC = () => {
   return (
-    <Tab.Navigator initialRouteName="Home" tabBarOptions={{
-      labelStyle: {fontSize: 14}
+    <Tab.Navigator initialRouteName={translate("navigation.home")} tabBarOptions={{
+      labelStyle: {fontSize: 12}
     }}>
-      <Tab.Screen name="Home" component={ Home } />
-      <Tab.Screen name="Livro" component={Book} />
-      <Tab.Screen name="Gênero" component={Genre} />
-      <Tab.Screen name="Sobre" component={ About } />
+      <Tab.Screen name={translate("navigation.home")} component={ HomeRoutes } />
+      <Tab.Screen name={translate("navigation.book")} component={ BookRoutes } />
+      <Tab.Screen name={translate("navigation.genre")} component={ GenreRoutes } />
+      <Tab.Screen name={translate("navigation.about")} component={ About } />
     </Tab.Navigator>
 )};
 

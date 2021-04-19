@@ -24,7 +24,6 @@ const SignIn: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = useCallback((data: SignInFormValues) => {
-    // "SUBMIT", data);
     dispatch(SignInActions.signInRequest(data));
   }, []);  
 

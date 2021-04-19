@@ -9,5 +9,5 @@ export const LongTextContainer = styled(Animatable.View)`
 `;
 
 export const Text = styled.Text`
-  color: ${Colors.light}
+  color: ${Colors.light};
 `;

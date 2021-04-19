@@ -29,7 +29,7 @@ const SignUp: React.FC = () => {
   return (
   <Container>
     <Content>
-    <PageTitle>{translate('titles.login')}</PageTitle>
+    <PageTitle>{translate('titles.sign')}</PageTitle>
         <MarginVerticalAroundFields />
         <Form ref={formRef} onSubmit={handleSubmit}>
         <Input

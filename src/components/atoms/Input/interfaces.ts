@@ -8,5 +8,6 @@ export interface InputValueReference {
 export interface InputProps extends TextInputProps {
   name: string
   icon: string
+  multiline?: boolean
   type?: "password" | "text" | "currency"
 }

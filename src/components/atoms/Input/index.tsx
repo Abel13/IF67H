@@ -5,7 +5,7 @@ import Colors from "../../../styles/colors.json";
 import { TextContainer, TextInput, IconContainer } from './styles';
 import { useField } from '@unform/core';
 
-const Input: React.FC<InputProps> = ({ name, icon, ...rest }) => {
+const Input: React.FC<InputProps> = ({ multiline, name, icon, ...rest }) => {
   const inputElementRef = useRef<any>(null);
 
   const { registerField, defaultValue = '', fieldName, error } = useField(name);
@@ -28,13 +28,18 @@ const Input: React.FC<InputProps> = ({ name, icon, ...rest }) => {
   }, [fieldName, registerField])
 
   return (
-  <TextContainer>
+  <TextContainer style={{
+      alignItems: multiline ? "flex-start" : "center", 
+      paddingTop: multiline? 10 : 0
+    }}>
     <IconContainer name={icon} size={20} color={Colors.grayHard} />
     
       <TextInput
+        {...rest}
         ref={inputValueRef}
         keyboardAppearance="dark"
-        placeholderTextColor={Colors.grayHard} {...rest}
+        textAlignVertical={multiline ? "top" : "center"}
+        placeholderTextColor={Colors.grayHard} 
         defaultValue={defaultValue}
         onChangeText={(value) => {
           inputValueRef.current.value = value;

@@ -1,20 +1,66 @@
 {
-  "en": {},
+  "en": {
+    "titles": {
+      "login": "LOG IN",
+      "sign": "SIGN UP",
+      "genres": "Genres"
+    },
+    "buttons": {
+      "login":"SIGN IN",
+      "register":"SIGN UP",
+      "save":"SAVE",
+      "backToLogin":"BACK TO LOGIN",
+      "edit":"Edit",
+      "delete": "Delete",
+      "select": "Select"
+    },
+    "placeholders":{
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "title": "Title",
+      "abstract": "Abstract",
+      "select": "Select...",
+      "selectOne": "Select one",
+      "genre": "Genre"
+    },
+    "navigation":{
+      "home": "Home",
+      "book": "Book",
+      "genre": "Genre",
+      "about": "About"
+    }
+  },
   "pt-BR": {
     "titles": {
       "login": "ENTRE NO APLICATIVO",
-      "sign": "CRIE SEU CADASTRO"
+      "sign": "CRIE SEU CADASTRO",
+      "genres": "Gêneros"
     },
     "buttons": {
       "login":"ENTRAR",
       "register":"CADASTRAR",
       "save":"SALVAR",
-      "backToLogin":"JA TENHO CADASTRO"
+      "backToLogin":"JA TENHO CADASTRO",
+      "edit":"Editar",
+      "delete": "Excluir",
+      "select": "Selecionar"
     },
     "placeholders":{
       "name": "Nome",
       "email": "E-Mail",
-      "password": "Senha"
+      "password": "Senha",
+      "title": "Título",
+      "abstract": "Resumo",
+      "select": "Secione...",
+      "selectOne": "Selecione um item",
+      "genre": "Gênero"
+    },
+    "navigation":{
+      "home": "Início",
+      "book": "Livro",
+      "genre": "Gênero",
+      "about": "Sobre"
     }
   }
 }
