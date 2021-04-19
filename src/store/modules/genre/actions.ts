@@ -54,6 +54,7 @@ export function deleteGenreFailure() {
   };
 }
 
+
 export function saveGenreRequest({ name }: Genre) {
   return {
     type: SAVE_GENRE,

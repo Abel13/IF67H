@@ -7,7 +7,7 @@ import { InputProps } from "./interfaces";
 export const TextContainer = styled.View<InputProps>`
   width: 100%;
   min-height: 60px;
-  max-height: 100px;
+  max-height: 300px;
   padding: 0 16px;
   flex-direction: row;
   background: ${Colors.inputs};
@@ -15,6 +15,7 @@ export const TextContainer = styled.View<InputProps>`
 `;
 
 export const TextInput = styled.TextInput`
+  height: 100%;
   flex: 1;
   width: 100%;
   color: ${Colors.white};

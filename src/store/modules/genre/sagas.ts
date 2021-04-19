@@ -4,11 +4,12 @@ import { Alert } from 'react-native';
 
 import { DELETE_GENRE, deleteGenreSuccess, deleteGenreFailure, deleteGenreRequest, saveGenreRequest, saveGenreSuccess, SAVE_GENRE, GET_GENRES_REQUEST, getGenresSuccess, getGenresFailure } from './actions';
 import { Genre } from '../../../models/genre';
+import { getBooksRequest } from '../book/actions';
 
 export function* deleteGenre({payload}: ReturnType<typeof deleteGenreRequest>) {
   try {
     const { id } = payload;
-    // delete on Firebase
+    yield firebase.db.collection('genres').doc(id).delete();
 
     yield put(deleteGenreSuccess({id}));
   } catch (error) {
@@ -49,8 +50,10 @@ export function* getGenres() {
         id: doc.id,
       });
     });
+
+    yield put(getBooksRequest());
   
-    yield put(getGenresSuccess({genres}))
+    yield put(getGenresSuccess({genres}));
   } catch (error) {
     yield put(getGenresFailure())
   }

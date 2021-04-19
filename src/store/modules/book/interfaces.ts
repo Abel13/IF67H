@@ -1,7 +1,7 @@
 import { Book } from "../../../models/book";
 
 export interface BookReducer {
-  loading: boolean
+  loading?: boolean
   books: Book[]
 }
 
@@ -11,7 +11,7 @@ export interface DeletePayload {
 
 export interface SavePayload {
   id: string
-  abstract: string
+  summary: string
   title: string
   genreId: number
 }

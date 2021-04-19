@@ -40,19 +40,19 @@ const BookPage: React.FC = ({route}) => {
       formRef.current?.setErrors({});
       const schema = Yup.object().shape({
         title: Yup.string().required(translate("error.titleRequired")),
-        abstract: Yup.string().required(translate("error.abstractRequired")),
+        summary: Yup.string().required(translate("error.abstractRequired")),
         genre: Yup.object().required(translate("error.genreRequired"))
       });
   
       await schema.validate(data, { abortEarly: false });
       
-      const {title, abstract, genre} = data;
+      const {title, summary, genre} = data;
       const {id: genreId} = genre;
 
       if(book)
-        dispatch(BookActions.editBookRequest({id: book.id, title, abstract, genreId} as Book))
+        dispatch(BookActions.editBookRequest({id: book.id, title, summary, genreId} as Book))
       else
-        dispatch(BookActions.saveBookRequest({title, abstract, genreId} as Book))
+        dispatch(BookActions.saveBookRequest({title, summary, genreId} as Book))
 
     } catch (error) {
       Alert.alert("Dados inválidos", "Preencha todos os dados corretamente " + error)
@@ -93,16 +93,15 @@ const BookPage: React.FC = ({route}) => {
           />
           <FieldMarginVertical/>
           <Input
-            name="abstract"
+            name="summary"
             icon="align-left"
-            placeholder={translate("placeholders.abstract")}
-            multiline={true}
-            numberOfLines={5}
+            placeholder={translate("placeholders.summary")}
+            multiline
           />
           <FieldMarginVertical/>
           <Select
             name="genre"
-            placeholder={translate("placeholders.abstract")}
+            placeholder={translate("placeholders.summary")}
             items={genreList}
             onValueChange={value => {
               setGenre(value)

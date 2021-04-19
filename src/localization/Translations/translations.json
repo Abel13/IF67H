@@ -19,7 +19,7 @@
       "email": "Email",
       "password": "Password",
       "title": "Title",
-      "abstract": "Abstract",
+      "summary": "Summary",
       "select": "Select...",
       "selectOne": "Select one",
       "genre": "Genre"
@@ -51,7 +51,7 @@
       "email": "E-Mail",
       "password": "Senha",
       "title": "Título",
-      "abstract": "Resumo",
+      "summary": "Resumo",
       "select": "Secione...",
       "selectOne": "Selecione um item",
       "genre": "Gênero"

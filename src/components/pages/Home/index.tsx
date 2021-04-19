@@ -7,7 +7,7 @@ import { ReducerProps } from '../../../store/modules/interfaces';
 import {BookCard} from '../../organisms';
 
 import * as BookActions from '../../../store/modules/book/actions'
-import * as GenresActions from '../../../store/modules/genre/actions'
+import * as GenreActions from '../../../store/modules/genre/actions'
 
 import { Container } from './styles';
 import { useNavigation } from '@react-navigation/core';
@@ -22,8 +22,7 @@ const Home: React.FC = () => {
   const navigation = useNavigation();
 
   useEffect(()=>{
-    dispatch(GenresActions.getGenresRequest());
-    // dispatch()
+    dispatch(GenreActions.getGenresRequest());
   },[])
 
 
@@ -43,7 +42,7 @@ const Home: React.FC = () => {
           renderItem={({item}) => {
             const genre = genres.find((i:Genre)=>i.id==item.genreId);
             return (<BookCard
-              abstract={item.abstract}
+              summary={item.summary}
               genre={genre.name}
               title={item.title}
               key={item.id}

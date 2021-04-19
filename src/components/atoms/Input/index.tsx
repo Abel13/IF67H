@@ -4,6 +4,7 @@ import Colors from "../../../styles/colors.json";
 
 import { TextContainer, TextInput, IconContainer } from './styles';
 import { useField } from '@unform/core';
+import { View } from 'react-native';
 
 const Input: React.FC<InputProps> = ({ multiline, name, icon, ...rest }) => {
   const inputElementRef = useRef<any>(null);
@@ -30,9 +31,11 @@ const Input: React.FC<InputProps> = ({ multiline, name, icon, ...rest }) => {
   return (
   <TextContainer style={{
       alignItems: multiline ? "flex-start" : "center", 
-      paddingTop: multiline? 10 : 0
+      paddingTop: multiline ? 5 : 0
     }}>
-    <IconContainer name={icon} size={20} color={Colors.grayHard} />
+      <View style={{paddingTop: multiline ? 5 : 0}}>
+        <IconContainer name={icon} size={20} color={Colors.grayHard}/>
+      </View>
     
       <TextInput
         {...rest}
@@ -41,6 +44,8 @@ const Input: React.FC<InputProps> = ({ multiline, name, icon, ...rest }) => {
         textAlignVertical={multiline ? "top" : "center"}
         placeholderTextColor={Colors.grayHard} 
         defaultValue={defaultValue}
+        multiline={multiline}
+        numberOfLines={5}
         onChangeText={(value) => {
           inputValueRef.current.value = value;
         }}

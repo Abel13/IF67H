@@ -1,6 +1,6 @@
 export interface BookCardProps {
   title: string
-  abstract: string
+  summary: string
   genre: string
   deleteItem(): void
   editItem(): void

@@ -27,6 +27,10 @@ const GenrePage: React.FC = () => {
     dispatch(GenreActions.saveGenreRequest({name: data.name} as Genre));
   }, []); 
 
+  const deleteGenre=(genre: Genre)=>{
+    dispatch(GenreActions.deleteGenreRequest(genre))
+  }
+
   return (
     <Container>
       <FormContainer>
@@ -50,9 +54,9 @@ const GenrePage: React.FC = () => {
         <MarginVerticalAroundFields/>
         <FlatList
           data={genres}
-          keyExtractor={item => item.id.toString()}
+          keyExtractor={item => item.id}
           renderItem={({item}) => 
-            <GenreCard name={item.name}/>
+            <GenreCard name={item.name} editItem={()=>{}} deleteItem={()=>deleteGenre(item)}/>
           }
         />
       </ListContainer>

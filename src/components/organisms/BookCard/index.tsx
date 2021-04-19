@@ -10,7 +10,7 @@ import Colors from '../../../styles/colors.json';
 
 import { Container, ActionsContainer, Content, Image,BookDetails, Separator } from './styles';
 
-const BookCard: React.FC<BookCardProps> = ({ editItem, deleteItem, abstract, genre, title}) => {
+const BookCard: React.FC<BookCardProps> = ({ editItem, deleteItem, summary, genre, title}) => {
   return (
     <Container>
       <Content>
@@ -27,7 +27,7 @@ const BookCard: React.FC<BookCardProps> = ({ editItem, deleteItem, abstract, gen
             </View>
 
             <LongText>
-              {abstract}
+              {summary}
             </LongText>
           </View>
 
