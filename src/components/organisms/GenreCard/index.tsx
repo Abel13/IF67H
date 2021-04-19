@@ -1,15 +1,13 @@
 import React from 'react';
-import { View } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
-import Colors from '../../../styles/colors.json';
 import { Label, Button } from '../../atoms';
+import { GenreCardProps } from './interfaces';
 
 import { Container, ActionButtons, ButtonSeparator } from './styles';
 
-const GenreCard: React.FC = () => {
+const GenreCard: React.FC<GenreCardProps> = ({name}) => {
   return (
     <Container>
-      <Label>Teste</Label>
+      <Label>{name}</Label>
       <ActionButtons>
         <Button type="icon" icon={"edit"} />
         <ButtonSeparator/>

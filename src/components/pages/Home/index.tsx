@@ -7,6 +7,7 @@ import { ReducerProps } from '../../../store/modules/interfaces';
 import {BookCard} from '../../organisms';
 
 import * as BookActions from '../../../store/modules/book/actions'
+import * as GenresActions from '../../../store/modules/genre/actions'
 
 import { Container } from './styles';
 import { useNavigation } from '@react-navigation/core';
@@ -19,6 +20,11 @@ const Home: React.FC = () => {
 
   const dispatch = useDispatch();
   const navigation = useNavigation();
+
+  useEffect(()=>{
+    dispatch(GenresActions.getGenresRequest());
+    // dispatch()
+  },[])
 
 
   const deleteBook=(book: Book)=>{

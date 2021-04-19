@@ -6,11 +6,11 @@ export interface BookReducer {
 }
 
 export interface DeletePayload {
-  id: number
+  id: string
 }
 
 export interface SavePayload {
-  id: number
+  id: string
   abstract: string
   title: string
   genreId: number

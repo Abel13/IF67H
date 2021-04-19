@@ -1,7 +1,9 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
+import firebase from '../../../services/firebase';
 import { Alert } from 'react-native';
 
-import { DELETE_GENRE, deleteGenreSuccess, deleteGenreFailure, deleteGenreRequest, saveGenreRequest, saveGenreSuccess } from './actions';
+import { DELETE_GENRE, deleteGenreSuccess, deleteGenreFailure, deleteGenreRequest, saveGenreRequest, saveGenreSuccess, SAVE_GENRE, GET_GENRES_REQUEST, getGenresSuccess, getGenresFailure } from './actions';
+import { Genre } from '../../../models/genre';
 
 export function* deleteGenre({payload}: ReturnType<typeof deleteGenreRequest>) {
   try {
@@ -20,19 +22,42 @@ export function* deleteGenre({payload}: ReturnType<typeof deleteGenreRequest>) {
 
 export function* saveGenre({payload}: ReturnType<typeof saveGenreRequest>) {
   try {
-    const { title, abstract, genreId } = payload;
-    // delete on Firebase
+    const { name } = payload;
+    const response = yield firebase.db.collection('genres').add({name});
     
-    const id = Math.random()
+    const {id} = response;
 
-    yield put(saveGenreSuccess({title, abstract, genreId, id}));
+    yield put(saveGenreSuccess({name, id}));
   } catch (error) {
+    console.log(error)
     Alert.alert(
       'Erro',
-      `Falha ao excluir o livro!`
+      `Falha ao excluir o livro! ${error}`
     );
     yield put(deleteGenreFailure());
   }
 }
 
-export default all([takeLatest(DELETE_GENRE, deleteGenre)]);
+export function* getGenres() {
+  try {
+    const genres = [] as Genre[];
+    const genresSnapshot = yield firebase.db.collection('genres').get();
+  
+    genresSnapshot.forEach((doc) => {
+      genres.push({
+        ...doc.data(),
+        id: doc.id,
+      });
+    });
+  
+    yield put(getGenresSuccess({genres}))
+  } catch (error) {
+    yield put(getGenresFailure())
+  }
+}
+
+export default all([
+  takeLatest(DELETE_GENRE, deleteGenre), 
+  takeLatest(SAVE_GENRE, saveGenre),
+  takeLatest(GET_GENRES_REQUEST, getGenres)
+]);

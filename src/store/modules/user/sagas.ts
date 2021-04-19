@@ -9,9 +9,7 @@ import { navigationRef } from '../../../services/NavigationService';
 export function* signUp({payload}: ReturnType<typeof signUpRequest>) {
   try {
     const { email, password } = payload;
-    const respones = yield firebase.auth.createUserWithEmailAndPassword(email, password);
-    
-    console.log(respones);
+    yield firebase.auth.createUserWithEmailAndPassword(email, password);
 
     yield put(signUpSuccess());
 

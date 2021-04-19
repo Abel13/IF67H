@@ -7,11 +7,7 @@ import { signInRequest, signInSuccess, SIGN_IN } from './actions';
 export function* signIn({payload}: ReturnType<typeof signInRequest>) {
   try {
     const { email, password } = payload;
-    console.log("EP", email, password)
-    console.log("PAY", payload)
-    const response = yield firebase.auth.signInWithEmailAndPassword(email, password);
-
-    console.log("RESPONSE", response);
+    yield firebase.auth.signInWithEmailAndPassword(email, password);
 
     yield put(signInSuccess());
   } catch (error) {

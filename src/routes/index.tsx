@@ -10,6 +10,9 @@ import MainRoutes from './MainRoute';
 const Routes: React.FC = () => {
   const { signedIn } = useSelector(state => state.auth);
 
+  
+  useEffect(()=>{},[signedIn])
+
   return(
     <>
       {signedIn ? <MainRoutes />:<AuthRoutes />}

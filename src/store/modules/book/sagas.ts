@@ -21,9 +21,14 @@ export function* deleteBook({payload}: ReturnType<typeof deleteBookRequest>) {
 export function* saveBook({payload}: ReturnType<typeof saveBookRequest>) {
   try {
     const { title, abstract, genreId } = payload;
-    // delete on Firebase
-
-    const id = Math.random()
+    
+    const response = yield firebase.db.collection('books').add({
+      title,
+      abstract,
+      genreId
+    });
+    
+    const { id } = response;
 
     yield put(saveBookSuccess({title, abstract, genreId, id}));
   } catch (error) {

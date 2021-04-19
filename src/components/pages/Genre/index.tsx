@@ -13,14 +13,18 @@ import { ScrollView, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { GenreCard } from '../../organisms';
 
-const Genre: React.FC = () => {
-  const formRef = useRef<FormHandles>(null);
+import * as GenreActions from '../../../store/modules/genre/actions';
+import { Genre } from '../../../models/genre';
+import { ReducerProps } from '../../../store/modules/interfaces';
 
+const GenrePage: React.FC = () => {
+  const formRef = useRef<FormHandles>(null);
+  const {genres} = useSelector<ReducerProps>(state=>state.genre);
 
   const dispatch = useDispatch();
 
   const handleSubmit = useCallback((data: GenreFormValues) => {
-    // dispatch(SignInActions.signInRequest(data));
+    dispatch(GenreActions.saveGenreRequest({name: data.name} as Genre));
   }, []); 
 
   return (
@@ -45,20 +49,10 @@ const Genre: React.FC = () => {
         <PageTitle>{translate("titles.genres")}</PageTitle>
         <MarginVerticalAroundFields/>
         <FlatList
-          data={[
-            {id: 0, name: "Ação"},
-            {id: 1, name: "Fantasia"},
-            {id: 2, name: "Fantasia"},
-            {id: 3, name: "Fantasia"},
-            {id: 4, name: "Fantasia"},
-            {id: 5, name: "Fantasia"},
-            {id: 6, name: "Fantasia"},
-            {id: 7, name: "Fantasia"},
-            {id: 8, name: "Fantasia"},
-            {id: 9, name: "Abel"},
-          ]}
+          data={genres}
+          keyExtractor={item => item.id.toString()}
           renderItem={({item}) => 
-            <GenreCard/>
+            <GenreCard name={item.name}/>
           }
         />
       </ListContainer>
@@ -66,4 +60,4 @@ const Genre: React.FC = () => {
   );
 }
 
-export default Genre;
+export default GenrePage;

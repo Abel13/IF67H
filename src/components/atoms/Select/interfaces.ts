@@ -2,7 +2,7 @@
 import {PickerSelectProps} from 'react-native-picker-select';
 
 export interface ItemProps {
-  id: number
+  id: string
   label: string
   value: object
 }

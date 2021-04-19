@@ -1,5 +1,9 @@
 import { Genre } from "../../../models/genre";
-import { DeletePayload, SavePayload } from "./interfaces";
+import { DeletePayload, GenreReducer, SavePayload } from "./interfaces";
+
+export const GET_GENRES_REQUEST = "@genre/GET_GENRES_REQUEST";
+export const GET_GENRES_SUCCESS = "@genre/GET_GENRES_SUCCESS";
+export const GET_GENRES_FAILURE = "@genre/GET_GENRES_FAILURE";
 
 export const DELETE_GENRE = "@genre/DELETE_GENRE";
 export const DELETE_GENRE_SUCCESS = "@genre/DELETE_GENRE_SUCCESS";
@@ -12,6 +16,25 @@ export const SAVE_GENRE_FAILURE = "@genre/SAVE_GENRE_FAILURE";
 export const EDIT_GENRE = "@genre/EDIT_GENRE";
 export const EDIT_GENRE_SUCCESS = "@genre/EDIT_GENRE_SUCCESS";
 export const EDIT_GENRE_FAILURE = "@genre/EDIT_GENRE_FAILURE";
+
+
+export function getGenresRequest() {
+  return {
+    type: GET_GENRES_REQUEST
+  };
+}
+export function getGenresSuccess({ genres }: GenreReducer) {
+  return {
+    type: GET_GENRES_SUCCESS,
+    payload: { genres }
+  };
+}
+export function getGenresFailure() {
+  return {
+    type: GET_GENRES_FAILURE
+  };
+}
+
 
 export function deleteGenreRequest({ id }: Genre) {
   return {
@@ -31,18 +54,16 @@ export function deleteGenreFailure() {
   };
 }
 
-
-
-export function saveGenreRequest({ title, abstract, genreId }: Genre) {
+export function saveGenreRequest({ name }: Genre) {
   return {
     type: SAVE_GENRE,
-    payload: { title, abstract, genreId },
+    payload: { name },
   };
 }
-export function saveGenreSuccess({ id, title, abstract, genreId }: SavePayload) {
+export function saveGenreSuccess({ id, name }: SavePayload) {
   return {
     type: SAVE_GENRE_SUCCESS,
-    payload: { id, title, abstract, genreId },
+    payload: { id, name },
   };
 }
 export function saveGenreFailure() {
@@ -52,16 +73,16 @@ export function saveGenreFailure() {
 }
 
 
-export function editGenreRequest({id, title, abstract, genreId }: Genre) {
+export function editGenreRequest({id, name }: Genre) {
   return {
     type: EDIT_GENRE,
-    payload: {id,  title, abstract, genreId },
+    payload: { id, name },
   };
 }
-export function editGenreSuccess({ id, title, abstract, genreId }: SavePayload) {
+export function editGenreSuccess({ id, name }: SavePayload) {
   return {
     type: EDIT_GENRE_SUCCESS,
-    payload: { id, title, abstract, genreId },
+    payload: { id, name },
   };
 }
 export function editGenreFailure() {
