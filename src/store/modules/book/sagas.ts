@@ -23,11 +23,11 @@ export function* saveBook({payload}: ReturnType<typeof saveBookRequest>) {
     const { title, abstract, genreId } = payload;
     // delete on Firebase
 
-    console.log("AAAAAA")
     const id = Math.random()
 
     yield put(saveBookSuccess({title, abstract, genreId, id}));
   } catch (error) {
+    console.log(error)
     Alert.alert(
       'Erro',
       `Falha ao excluir o livro!`

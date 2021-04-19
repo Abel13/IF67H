@@ -22,7 +22,6 @@ const SignUp: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = useCallback((data: SignUpFormValues) => {
-    // "SUBMIT", data);
     dispatch(UserActions.signUpRequest(data));
   }, []);
 

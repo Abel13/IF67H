@@ -22,8 +22,7 @@ export function* saveGenre({payload}: ReturnType<typeof saveGenreRequest>) {
   try {
     const { title, abstract, genreId } = payload;
     // delete on Firebase
-
-    console.log("AAAAAA")
+    
     const id = Math.random()
 
     yield put(saveGenreSuccess({title, abstract, genreId, id}));

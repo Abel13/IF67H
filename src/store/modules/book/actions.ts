@@ -34,7 +34,6 @@ export function deleteBookFailure() {
 
 
 export function saveBookRequest({ title, abstract, genreId }: Book) {
-  console.log("SAVING")
   return {
     type: SAVE_BOOK,
     payload: { title, abstract, genreId },

@@ -47,7 +47,6 @@ export default function book(state = INITIAL_STATE, action: any) {
         draft.books = newList;
         return draft;
       case SAVE_BOOK_SUCCESS:
-        console.log("REDUzio", action.payload)
         draft.books = [...state.books, {
           abstract: action.payload.abstract,
           title: action.payload.title,

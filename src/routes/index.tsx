@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Colors from '../styles/colors.json';
 
@@ -10,12 +10,11 @@ import MainRoutes from './MainRoute';
 const Routes: React.FC = () => {
   const { signedIn } = useSelector(state => state.auth);
 
-  if(signedIn){
-    return(<MainRoutes />)
-  }
-  else {
-    return(<AuthRoutes />)
-  }
+  return(
+    <>
+      {signedIn ? <MainRoutes />:<AuthRoutes />}
+    </>
+  )
 };
 
 export default Routes;

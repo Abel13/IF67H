@@ -105,7 +105,6 @@ const BookPage: React.FC = ({route}) => {
             placeholder={translate("placeholders.abstract")}
             items={genreList}
             onValueChange={value => {
-              console.log("MUDA", value)
               setGenre(value)
             }}
             value={genre}

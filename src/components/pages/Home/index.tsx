@@ -29,10 +29,6 @@ const Home: React.FC = () => {
     navigation.navigate(translate("navigation.book"), book);
   }
 
-  useEffect(()=>{
-    console.log("ATALIZADOS", books.length)
-  }, [books])
-
   return (
     <Container>
         <FlatList

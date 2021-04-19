@@ -11,11 +11,9 @@ export default function auth(state = INITIAL_STATE, action: any) {
   return produce(state, draft => {
     switch (action.type) {
       case SIGN_IN:
-        // "ENTRANDO")
         draft.loading = true;
         return draft;
-      case SIGN_IN_SUCCESS:
-        // "ENTROU")
+      case SIGN_IN_SUCCESS:        
         draft.loading = false;
         draft.signedIn = true;
         return draft;
